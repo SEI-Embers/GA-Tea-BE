@@ -1,12 +1,12 @@
 from rest_framework import viewsets
-from .serializers import UserSerializer, PostSerializer, CommentSerializer, ReplySerializer, CareerSerializer
-from .models import User, Post, Comment, Reply, Career
+from .serializers import AccountSerializer, PostSerializer, CommentSerializer
+from .models import Account, Post, Comment
 
 # Create your views here.
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class AccountViewSet(viewsets.ModelViewSet):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
     
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -15,11 +15,3 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-
-class ReplyViewSet(viewsets.ModelViewSet):
-    queryset = Reply.objects.all()
-    serializer_class = ReplySerializer
-
-class CareerViewSet(viewsets.ModelViewSet):
-    queryset = Career.objects.all()
-    serializer_class = CareerSerializer
