@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-qry!a!dm(7*-kl#xj580e8dby!h!h)c!6bj@y(p_ygbu8d*m^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'ga-tea-be-production.up.railway.app']
+ALLOWED_HOSTS = ['https://ga-tea-be-production.up.railway.app', 'ga-tea-be-production.up.railway.app', 'railway.app']
 
 
 # Application definition
