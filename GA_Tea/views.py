@@ -105,7 +105,7 @@ class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
             "refresh": res["refresh"],
             "access": res["access"]
         }, status=status.HTTP_201_CREATED)
-      return HttpResponse("Account already exist")
+      return HttpResponse("Account already exists")
 
 
 class RefreshViewSet(viewsets.ViewSet, TokenRefreshView):
