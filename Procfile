@@ -1,0 +1,1 @@
+web: gunicorn GA_Tea_BE.wsgi
