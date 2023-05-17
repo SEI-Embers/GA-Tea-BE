@@ -97,18 +97,28 @@ WSGI_APPLICATION = 'GA_Tea_BE.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gatea',
+#         'USER': 'nine_admin',
+#         'PASSWORD': '9259',
+#         'HOST': 'localhost'
+#     }
+# }
+
+db_name = 'gatea'
+user = 'nine_admin'
+password = '9259'
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gatea',
-        'USER': 'nine_admin',
-        'PASSWORD': '9259',
-        'HOST': 'localhost'
-    }
+  'default': dj_database_url.config(
+    default=f'postgres://{user}:{password}@localhost/{db_name}'
+  )
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
