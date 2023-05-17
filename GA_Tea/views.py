@@ -83,7 +83,7 @@ class LoginViewSet(ModelViewSet, TokenObtainPairView):
 class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
     serializer_class = RegisterSerializer
     permission_classes = (AllowAny,)
-    http_method_names = ['post']
+    http_method_names = ['post', 'get']
 
     def create(self, request, *args, **kwargs):
       try:
