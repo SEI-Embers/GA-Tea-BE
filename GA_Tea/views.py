@@ -11,6 +11,7 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
+from django.http import HttpResponse
     
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -45,8 +46,8 @@ class AccountViewSet(viewsets.ModelViewSet):
     authentication_classes = [JWTTokenUserAuthentication]
 
     def get_queryset(self):
-        if self.request.user.is_superuser:
-            return Account.objects.all()
+        # if self.request.user.is_superuser:
+        return Account.objects.all()
 
     def get_object(self):
         lookup_field_value = self.kwargs[self.lookup_field]
