@@ -1,1 +1,1 @@
-web: gunicorn GA_Tea_BE.wsgi
+web: gunicorn GA_Tea_BE.wsgi --log-file -

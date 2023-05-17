@@ -9,10 +9,13 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os 
 from pathlib import Path
 from datetime import timedelta
 import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qry!a!dm(7*-kl#xj580e8dby!h!h)c!6bj@y(p_ygbu8d*m^'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -97,28 +100,29 @@ WSGI_APPLICATION = 'GA_Tea_BE.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'gatea',
-#         'USER': 'nine_admin',
-#         'PASSWORD': '9259',
-#         'HOST': 'localhost'
-#     }
-# }
-
-db_name = 'gatea'
-user = 'nine_admin'
-password = '9259'
-
 DATABASES = {
-  'default': dj_database_url.config(
-    default=f'postgres://{user}:{password}@localhost/{db_name}'
-  )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': str(os.getenv('NAME')),
+        'USER': str(os.getenv('USER')),
+        'PASSWORD': str(os.getenv('PASSWORD')),
+        'HOST': str(os.getenv('HOST')),
+        'PORT': str(os.getenv('PORT')),
+    }
 }
 
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+# db_name = 'gatea'
+# user = 'nine_admin'
+# password = '9259'
+
+# DATABASES = {
+#   'default': dj_database_url.config(
+#     default=f'postgres://{user}:{password}@localhost/{db_name}'
+#   )
+# }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
