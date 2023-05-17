@@ -37,16 +37,16 @@ class CommentViewSet(viewsets.ModelViewSet):
       serializer.save(owner=self.request.user)   
 
 class AccountViewSet(viewsets.ModelViewSet):
-    # http_method_names = ['get', 'put', 'patch']
-    queryset = Account.objects.all()
+    http_method_names = ['get', 'put', 'patch']
+    # queryset = Account.objects.all()
     serializer_class = AccountSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,]
     filter_backends = [filters.OrderingFilter]
     authentication_classes = [JWTTokenUserAuthentication]
 
-    # def get_queryset(self):
-    #     if self.request.user.is_superuser:
-    #         return Account.objects.all()
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Account.objects.all()
 
     def get_object(self):
         lookup_field_value = self.kwargs[self.lookup_field]
@@ -83,7 +83,7 @@ class LoginViewSet(ModelViewSet, TokenObtainPairView):
 class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
     serializer_class = RegisterSerializer
     permission_classes = (AllowAny,)
-    http_method_names = ['post', 'get']
+    http_method_names = ['post']
 
     def create(self, request, *args, **kwargs):
       try:
