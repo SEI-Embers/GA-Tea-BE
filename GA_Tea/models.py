@@ -35,7 +35,7 @@ class Account(AbstractUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
-    pic = models.CharField(default='https://imgur.com/a/2L57GM9')
+    pic = models.CharField(default='https://i.imgur.com/RMiSvIF.png')
   
     objects = UserManager()
 
