@@ -36,6 +36,7 @@ class Account(AbstractUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     pic = models.CharField(default='https://imgur.com/a/2L57GM9')
+
   
     objects = UserManager()
 
@@ -62,3 +63,8 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.owner.username
+
+class Career(models.Model):
+    company_name = models.CharField()
+    status = models.CharField()
+    timeline = models.DateTimeField()

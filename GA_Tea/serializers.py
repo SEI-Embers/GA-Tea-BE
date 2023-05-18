@@ -61,3 +61,6 @@ class RegisterSerializer(AccountSerializer):
         except ObjectDoesNotExist:
             user = Account.objects.create_user(**validated_data)
         return user
+
+
+    
