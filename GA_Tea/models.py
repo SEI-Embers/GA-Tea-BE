@@ -35,7 +35,7 @@ class Account(AbstractUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
-    pic = models.CharField(default='https://i.imgur.com/RMiSvIF.png')
+    pic = models.CharField(default='https://upload.wikimedia.org/wikipedia/en/2/2d/SSU_Kirby_artwork.png')
   
     objects = UserManager()
 
