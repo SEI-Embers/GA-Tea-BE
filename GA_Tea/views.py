@@ -20,8 +20,11 @@ class PostViewSet(viewsets.ModelViewSet):
                       IsOwnerOrReadOnly]
     
     def perform_create(self, serializer):
-      serializer.save(owner=self.request.user)
       
+      serializer.save(owner=self.request.user)
+    #   auth_header = self.request.headers.get('Authorization')
+    #   print(auth_header)
+    
     def perform_update(self, serializer):
       serializer.save(owner=self.request.user)    
 
