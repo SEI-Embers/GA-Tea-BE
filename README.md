@@ -129,11 +129,7 @@ The API supports the following CRUD (Create, Read, Update, Delete) operations fo
 
 
 
-Post Project items:
-Career:
-company_name = models.CharField()
-status = models.CharField()
-timeline = models.DateTimeField()
+
 
 
 
