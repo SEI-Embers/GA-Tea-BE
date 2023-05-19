@@ -1,5 +1,5 @@
-from .serializers import AccountSerializer, PostSerializer, CommentSerializer, LoginSerializer, RegisterSerializer
-from .models import Account, Post, Comment
+from .serializers import AccountSerializer, PostSerializer, CommentSerializer, LoginSerializer, RegisterSerializer, CareerSerializer
+from .models import Account, Post, Comment, Career
 from django.shortcuts import render, get_object_or_404
 from .permissions import IsOwnerOrReadOnly
 from rest_framework import viewsets, permissions, generics, filters, status
@@ -11,7 +11,7 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
-    
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -121,3 +121,8 @@ class RefreshViewSet(viewsets.ViewSet, TokenRefreshView):
             raise InvalidToken(e.args[0])
 
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
+
+class CareerViewSet(viewsets.ModelViewSet):
+    queryset = Career.objects.all()
+    serializer_class = CareerSerializer
+  

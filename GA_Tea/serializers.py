@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Post, Comment
+from .models import Account, Post, Comment, Career
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.settings import api_settings
@@ -62,5 +62,10 @@ class RegisterSerializer(AccountSerializer):
             user = Account.objects.create_user(**validated_data)
         return user
 
+
+class CareerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Career
+        fields = '__all__'
 
     
