@@ -1,5 +1,5 @@
 from rest_framework.routers import SimpleRouter
-from .views import AccountViewSet, LoginViewSet, RegistrationViewSet, RefreshViewSet, PostViewSet, CommentViewSet
+from .views import AccountViewSet, LoginViewSet, RegistrationViewSet, RefreshViewSet, PostViewSet, CommentViewSet, CareerViewSet
 
 routes = SimpleRouter()
 
@@ -11,6 +11,7 @@ routes.register(r'users', AccountViewSet, basename='users')
 
 routes.register(r'posts', PostViewSet, basename='posts')
 routes.register(r'comments', CommentViewSet, basename='comments')
+routes.register(r'careers', CareerViewSet, basename='careers')
 
 urlpatterns = [
     *routes.urls,
